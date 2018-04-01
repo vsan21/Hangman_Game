@@ -6,6 +6,8 @@ let index;
 let word;
 let underScore;
 
+let remainingTries = 10;
+
 $(document).ready(function() {
   //Creates a new game with new word.
   $('#new').click(function() {
@@ -30,6 +32,9 @@ $(document).ready(function() {
       if(word[i] === this.value) {
         underScore[i] = this.value;
         $('#underscore').html(underScore);
+      } else {
+        remainingTries -= 1;
+        $('#remaining').html('Remaining Tries: ' + remainingTries)
       }
     }
 
