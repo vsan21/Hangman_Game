@@ -1,33 +1,39 @@
-// // this array holds the words
-// let wordList = ['engineer', 'scientist', 'teacher', 'park ranger', 'baker'];
-//
-// // this chooses a word randomly
-// let index = Math.floor(Math.random() * wordList.length);
-// let word = wordList[index];
+// this array holds the words
+let wordList = ['engineer', 'scientist', 'teacher', 'park ranger', 'baker'];
 
-let word = 'DOG';
-let wordArray = [];
+//global variables, keep these outside so that it can be accessed everywhere.
+let index;
+let word;
+let underScore;
+
 
 $(document).ready(function() {
-  //Generates a new game. The number of underscores are created based on the word's length and here, each underscore has a specific index.
+  //Creates a new game with new word.
   $('#new').click(function() {
 
+    //Reassigns global variable, index --> generates a random number to be used for indexing
+    index = Math.floor(Math.random() * wordList.length);
+    //Reassigns global variable, word --> uses the randomly generated number to index to a specific word in the wordList array.
+    word = wordList[index].toUpperCase();
+    //Reassigns global variable underScore --> creates new array to hold the underscores
+    underScore = [];
+    //the word's length determines how many underscores to include. (Each underscore has an index)
     for (let i = 0; i < word.length; i++) {
-      wordArray[i] = "__ ";
+      underScore[i] = "__ ";
     }
-    $('p').html(wordArray);
+    $('#underscore').html(underScore);
   });
 
-  $('button').click(function() {
+  $('.letters').click(function() {
     for (let i = 0; i < word.length; i++) {
-      //Compares the user's letter with every WORD index --> if match, then reassign the UNDERSCORE index with that letter (changes _ into a letter)
+
+      //Compares the user's letter pick with every WORD index --> if match, then reassign the corresponding UNDERSCORE index with that letter (changes _ into a letter)
       if(word[i] === this.value) {
-        wordArray[i] = this.value;
-        $('p').html(wordArray);
-      } else {
-        // try again, add new body part
+        underScore[i] = this.value;
+        $('#underscore').html(underScore);
       }
     }
+
   });
 
 });
