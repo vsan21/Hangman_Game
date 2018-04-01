@@ -1,16 +1,15 @@
 // this array holds the words
-let wordList = ['engineer', 'scientist', 'teacher', 'park ranger', 'baker'];
+let wordList = ['apple', 'orange', 'banana', 'passionfruit', 'watermelon'];
 
 //global variables, keep these outside so that it can be accessed everywhere.
 let index;
 let word;
 let underScore;
 
-
 $(document).ready(function() {
   //Creates a new game with new word.
   $('#new').click(function() {
-
+    $('#hint').show();
     //Reassigns global variable, index --> generates a random number to be used for indexing
     index = Math.floor(Math.random() * wordList.length);
     //Reassigns global variable, word --> uses the randomly generated number to index to a specific word in the wordList array.
